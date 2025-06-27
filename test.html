@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="test.css">
+  <meta charset="UTF-8">
+  <title>Buvan Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #home {
+      background: #fdf6f0;
+    }
+
+    #about {
+      background: #e5e5e5;
+    }
+
+    #projects {
+      background: #d2e0e0;
+    }
+
+    #contact {
+      background: #c9c9ff;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 40px;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h1>Buvan</h1>
+    <p>Creative Developer | Portfolio</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a front-end developer passionate about clean design and smooth experiences.</p>
+  </section>
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="project-container">
+    <div class="project-card">
+      <img src="logo.png" alt="Project 1">
+      <h3>Project One</h3>
+      <p>A short description of what this project is about.</p>
+      <a href="#" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <img src="logo.png" alt="Project 2">
+      <h3>Project Two</h3>
+      <p>Another cool thing I built recently.</p>
+      <a href="#" target="_blank">View Project</a>
+    </div>
+    
+    <!-- Add more cards here -->
+  </div>
+</section>
+
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: your@email.com</p>
+  </section>
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    ScrollReveal().reveal('section h1, section h2, section p', {
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      origin: 'bottom',
+      interval: 200
+    });
+  </script>
+</body>
+</html>
