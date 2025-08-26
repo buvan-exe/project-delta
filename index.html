@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Devicon icons stylesheet -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <style>
+    :root{
+      --bg: #0b0f17; /* deep blue/black */
+      --panel: #121827;
+      --text: #e8ecf1;
+      --muted: #94a3b8;
+      --brand: #7c5cff; /* violet */
+      --brand-2:#22d3ee; /* cyan */
+      --accent:#10b981; /* emerald */
+      --ring: rgba(124,92,255,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 800px at 80% -20%, rgba(124,92,255,.12), transparent 60%),
+      radial-gradient(900px 700px at -10% 10%, rgba(34,211,238,.12), transparent 60%), var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(to bottom, rgba(11,15,23,.9), rgba(11,15,23,.65) 60%, transparent);backdrop-filter:saturate(140%) blur(6px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 8px}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
+    .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg, var(--brand), var(--brand-2));box-shadow:0 0 0 6px var(--ring)}
+    .nav a{opacity:.9;margin-left:18px}
+    .nav a:hover{opacity:1}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:60px 8px 40px}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.25);font-size:12px;color:#c9d1ff}
+    .title{font-size:clamp(28px, 5vw, 46px);line-height:1.1;margin:14px 0}
+    .title .grad{background:linear-gradient(90deg, var(--brand), var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{font-size:clamp(14px, 2.2vw, 18px);color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));color:var(--text);box-shadow:var(--shadow)}
+    .btn.primary{border-color:transparent;background:linear-gradient(135deg, var(--brand), var(--brand-2));color:#0b0f17;font-weight:700}
+
+    .hero-card{position:relative;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow);padding:18px;overflow:hidden}
+    .hero-card::after{content:"";position:absolute;inset:-2px;-webkit-mask:radial-gradient(240px 140px at 0 0, #000 1%, transparent 60%);background:radial-gradient(220px 120px at 0 0, rgba(124,92,255,.35), transparent 60%)}
+    .dev-img-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .dev-img{aspect-ratio:4/5;object-fit:cover}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{font-family:"JetBrains Mono", monospace;font-size:12px;padding:6px 10px;border-radius:999px;background:#0f1422;border:1px solid rgba(255,255,255,.08);opacity:.9}
+
+    section{padding:40px 8px}
+    .section-title{font-weight:800;font-size:22px;margin-bottom:16px}
+    .grid{display:grid;gap:16px}
+    .cards-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;min-height:140px}
+    .card h4{margin:0 0 8px}
+    .meta{color:var(--muted);font-size:14px}
+
+    .projects .proj{display:flex;gap:16px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+    .proj img{width:120px;height:80px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    .contact form{display:grid;gap:10px}
+    input,textarea{background:#0f1422;border:1px solid rgba(255,255,255,.08);color:var(--text);border-radius:12px;padding:12px;font-family:inherit}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:40px 8px;color:var(--muted);text-align:center}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .proj img{width:96px;height:64px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span> <span>Team Delta</span></div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">🚀 Building useful things with code & AI Technology</span>
+        <h1 class="title">Hi, I'm <span class="grad">Buvan</span> -
+          <span id="typer"></span>
+        </h1>
+        <p class="subtitle">Full-stack developer blending <strong> Information Technology </strong> with <strong>AI superpowers</strong>. I design, build and ship performant web apps and ML-powered features.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+        <div class="chips" aria-label="social">
+          <a class="chip" href="https://github.com/buvan-exe">github.com/buvan-exe</a>
+          <a class="chip" href="https://www.linkedin.com/in/buvan-r-99987537b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">linkedin.com/in/Buvan R</a>
+          <a class="chip" href="https://www.instagram.com/sergio__here?igsh=cDBjY203OHc1YXps">Instagram.com/Sergio__Here</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Developer">
+        <div class="dev-img-wrap">
+          <img class="dev-img" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Developer at desk" />
+        </div>
+        <div class="chips" style="margin-top:14px">
+          <span class="chip">#JavaScript</span>
+          <span class="chip">#Python</span>
+          <span class="chip">#React</span>
+          <span class="chip">#Node</span>
+          <span class="chip">#ML</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <h3 class="section-title">About</h3>
+      <p class="meta">I'm an IT student focused on AI-enabled software. I love shipping small, sharp projects that solve real problems — from chatbots and price predictors to civic tools like issue trackers.</p>
+    </section>
+
+    <!-- Updated Skills Section with Icons -->
+    <section id="skills">
+      <h3 class="section-title">Skills</h3>
+      <div class="grid cards-3">
+        <div class="card">
+          <h4>Frontend</h4>
+          <p class="meta">
+            <i class="devicon-html5-plain colored"></i> HTML
+            <i class="devicon-css3-plain colored"></i> CSS
+            <i class="devicon-javascript-plain colored"></i> JavaScript
+            <i class="devicon-react-original colored"></i> React
+          </p>
+        </div>
+        <div class="card">
+          <h4>Backend</h4>
+          <p class="meta">
+            <i class="devicon-nodejs-plain colored"></i> Node
+            <i class="devicon-python-plain colored"></i> Python (FastAPI/Flask)
+            <i class="devicon-postgresql-plain colored"></i> PostgreSQL
+          </p>
+        </div>
+        <div class="card">
+          <h4>AI / DevOps</h4>
+          <p class="meta">
+            
+            <i class="devicon-numpy-plain colored"></i> NumPy
+            <i class="devicon-pandas-plain-wordmark"></i> Pandas
+            <i class="devicon-scikitlearn-plain colored"></i> scikit-learn
+            <i class="devicon-pytorch-original colored"></i> PyTorch
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h3 class="section-title">Projects</h3>
+      <div class="grid">
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Project thumbnail">
+          <div>
+            <h4>CivicConnect</h4>
+            <p class="meta">A platform connecting citizens with local authorities for transparent issue reporting and tracking.</p>
+            <a class="chip" href="CivicConnect-Final.pptx">Presentation</a>
+          </div>
+        </article>
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="Project thumbnail">
+          <div>
+            <h4>SSDC - Weather Balloon</h4>
+            <p class="meta">IoT-enabled Weather Balloon collecting atmospheric data with ML models (Time Series Forecasting & Random Forest) predicting temperature, pressure, and wind patterns.</p>
+          </div>
+        </article>
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Project thumbnail">
+          <div>
+            <h4>Chat Support Bot</h4>
+            <p class="meta">A retrieval-augmented FAQ bot with feedback loop and analytics.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div>
+        <h3 class="section-title">Contact</h3>
+        <p class="meta">Have an opportunity or want to collaborate? Drop a message — I usually reply within a day.</p>
+        <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll get back to you soon.'); this.reset();">
+          <input required placeholder="Name" />
+          <input type="email" required placeholder="Email" />
+          <textarea required placeholder="Your message"></textarea>
+          <button class="btn primary" type="submit">Send Message</button>
+        </form>
+      </div>
+      <aside>
+        <div class="card">
+          <h4>Quick Links</h4>
+          <p class="meta">Email: Buvan_Linkedin@gmail.com<br>Location: Chennai, IN</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/buvan-exe">GitHub</a>
+            <a class="chip" href="https://www.linkedin.com/in/buvan-r-99987537b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+            <a class="chip" href="https://www.instagram.com/sergio__here?igsh=cDBjY203OHc1YXps">Instagram</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Buvan — Built with 💜 and coffee.</div>
+  </footer>
+
+  <script>
+    // Simple typewriter effect
+    const roles = [
+      'AI-enabled Software Developer',
+      'Full-Stack Engineer',
+    ];
+    let i=0, j=0, forward=true, el=document.getElementById('typer');
+    function tick(){
+      const word = roles[i];
+      if(forward){ j++; if(j===word.length+1){ forward=false; setTimeout(tick, 1000); return; } }
+      else { j--; if(j===0){ forward=true; i=(i+1)%roles.length; } }
+      el.textContent = word.slice(0,j);
+      setTimeout(tick, forward?70:40);
+    }
+    tick();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="websong.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Toggle Music Button -->
+  <button id="music-btn">🔊</button>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+
+    // Style the button (round, cute)
+    btn.style.position = "fixed";
+    btn.style.bottom = "20px";
+    btn.style.right = "20px";
+    btn.style.width = "50px";
+    btn.style.height = "50px";
+    btn.style.border = "none";
+    btn.style.borderRadius = "50%";
+    btn.style.backgroundColor = "#0065F8";
+    btn.style.color = "white";
+    btn.style.fontSize = "20px";
+    btn.style.cursor = "pointer";
+    btn.style.boxShadow = "0 4px 6px rgba(0,0,0,0.2)";
+
+    // Toggle music on button click
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "🔊";
+      } else {
+        music.pause();
+        btn.textContent = "🔇";
+      }
+    });
+  </script>
+</body>
+</html>
